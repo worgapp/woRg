@@ -1,0 +1,213 @@
+<% if params[:user_id] == nil %>
+	<%= render :file => "partials/_login" %>
+<% elsif params[:commit] == "Pick me!" %>
+	<% params[:list] = ((params[:list].split(',')).push(params[:idc].to_s)).join(',')%>
+	<% @wardrobe = WardrobeController.new %>
+	<% @wardrobe.set_search_data(params) %>
+	<% @result_list = @wardrobe.search %>
+<% elsif params[:commit] == "Unpick" %>
+	<% params[:list] = params[:list].split(',') %>
+	<% params[:list].delete(params[:idc].to_s) %>
+	<% params[:list] = (params[:list]).join(',') %>
+	<% @wardrobe = WardrobeController.new %>
+	<% @wardrobe.set_search_data(params) %>
+	<% @result_list = @wardrobe.search %>
+<% elsif params[:commit] == "Check them out!" %>
+	<% @wardrobe = WardrobeController.new %>
+	<% @wardrobe.set_search_data(params) %>
+	<% @result_list = @wardrobe.search %>
+<% end %>
+
+<% if params[:user_id] != nil %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>woRg &middot; Outfit results</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- Le styles -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/bootswatch.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+<%= render :file => "partials/_navigation_bar" %>
+
+<br>
+<br>
+<br>
+<br>
+
+
+<div class="row">
+    <div class="span12">
+        <h2>The possible items for the final outfit are:</h2>
+    </div>
+</div>
+<br>
+<br>
+
+<div class="row-fluid">
+    <div class="span12">
+        <div class="well span12">
+            <div class="span12">
+                <h2>
+                    Top:
+                </h2>
+				<% @counter = 1 %>
+				<% @result_list.each do |cloth| %>
+					<% if @wardrobe.isTop?(cloth[1].to_i) %>
+		            <% if @counter%2 == 1 and @counter > 2 %>
+						</div></div></div>
+						<div class="row-fluid">
+							<div class="span12">
+								<div class="well span12">
+									<div class="span12">
+					<% end %>
+					<div class="thumbnail span5">
+		                <%= image_tag(cloth[9].to_s, {:alt => "image", :width => "300", :height => "200"}) %>
+
+		                <div class="caption">
+		                    <h3>Item <%= @counter %></h3>
+						
+							<p><b style="font-family:lobster">Type:</b> <%= @wardrobe.get_type_by_id(cloth[1].to_i) %></p>
+
+							<p><b style="font-family:lobster">Primary color:</b> <%= @wardrobe.get_color_by_id(cloth[2].to_i) %></p>
+
+							<p><b style="font-family:lobster">Secondary color:</b> <%= @wardrobe.get_color_by_id(cloth[3].to_i) %></p>
+
+							<p><b style="font-family:lobster">Primary material:</b> <%= @wardrobe.get_material_by_id(cloth[4].to_i) %></p>
+
+							<p><b style="font-family:lobster">Secondary material:</b> <%= @wardrobe.get_material_by_id(cloth[5].to_i) %></p>
+
+							<p><b style="font-family:lobster">Primary model:</b> <%= @wardrobe.get_model_by_id(cloth[6].to_i) %></p>
+
+							<p><b style="font-family:lobster">Secondary model:</b> <%= @wardrobe.get_model_by_id(cloth[7].to_i) %></p>
+
+							<p><b style="font-family:lobster">Description:</b> <%= cloth[8].to_s %></p>
+							
+							<% if params[:list] == nil %>
+								<% params[:list] = "" %>
+							<% end %>
+							<%= form_tag({:controller => "wardrobe", :action => "results_vis", :user_id => params[:user_id], :formal => params[:formal], :color => params[:color], :material => params[:material], :model => params[:model], :idc => cloth[0].to_i, :list => params[:list]}, {:method => "post"}) do %>
+								<% if params[:list] == "" %>							
+			        				<p><%= submit_tag("Pick me!", :class => "btn btn-success btn-small") %></p>
+								<% elsif (params[:list].split(',')).include?(cloth[0].to_s) %>
+									<p><%= submit_tag("Unpick", :class => "btn btn-primary btn-small") %></p>
+								<% else %>
+									<p><%= submit_tag("Pick me!", :class => "btn btn-success btn-small") %></p>
+								<% end %>
+							<% end %>
+		                </div>
+					 </div>
+					<% if @counter%2 == 0 %>
+							</div>
+						</div>
+					<% end %>
+					<% @counter += 1 %>
+					<% end %>
+					
+				<% end %>
+			</div>
+		</div>
+	</div>
+<div class="row-fluid">
+    <div class="span12">
+        <div class="well span12">
+            <div class="span12">
+                <h2>
+                    Bottom:
+                </h2>
+				<% @counter = 1 %>
+				<% @result_list.each do |cloth| %>
+					<% if not @wardrobe.isTop?(cloth[1].to_i) %>
+		            <% if @counter%2 == 1 and @counter > 2 %>
+						</div></div></div>
+						<div class="row-fluid">
+							<div class="span12">
+								<div class="well span12">
+									<div class="span12">
+					<% end %>
+					<div class="thumbnail span5">
+		                <%= image_tag(cloth[9].to_s, {:alt => "image", :width => "300", :height => "200"}) %>
+
+		                <div class="caption">
+		                    <h3>Item <%= @counter %></h3>
+						
+							<p><b style="font-family:lobster">Type:</b> <%= @wardrobe.get_type_by_id(cloth[1].to_i) %></p>
+
+							<p><b style="font-family:lobster">Primary color:</b> <%= @wardrobe.get_color_by_id(cloth[2].to_i) %></p>
+
+							<p><b style="font-family:lobster">Secondary color:</b> <%= @wardrobe.get_color_by_id(cloth[3].to_i) %></p>
+
+							<p><b style="font-family:lobster">Primary material:</b> <%= @wardrobe.get_material_by_id(cloth[4].to_i) %></p>
+
+							<p><b style="font-family:lobster">Secondary material:</b> <%= @wardrobe.get_material_by_id(cloth[5].to_i) %></p>
+
+							<p><b style="font-family:lobster">Primary model:</b> <%= @wardrobe.get_model_by_id(cloth[6].to_i) %></p>
+
+							<p><b style="font-family:lobster">Secondary model:</b> <%= @wardrobe.get_model_by_id(cloth[7].to_i) %></p>
+
+							<p><b style="font-family:lobster">Description:</b> <%= cloth[8].to_s %></p>
+							
+							<% if params[:list] == nil %>
+								<% params[:list] = "" %>
+							<% end %>
+							<%= form_tag({:controller => "wardrobe", :action => "results_vis", :user_id => params[:user_id], :formal => params[:formal], :color => params[:color], :material => params[:material], :model => params[:model], :idc => cloth[0].to_i, :list => params[:list]}, {:method => "post"}) do %>
+								<% if params[:list] == "" %>							
+			        				<p><%= submit_tag("Pick me!", :class => "btn btn-success btn-small") %></p>
+								<% elsif (params[:list].split(',')).include?(cloth[0].to_s) %>
+									<p><%= submit_tag("Unpick", :class => "btn btn-primary btn-small") %></p>
+								<% else %>
+									<p><%= submit_tag("Pick me!", :class => "btn btn-success btn-small") %></p>
+								<% end %>
+							<% end %>
+		                </div>
+					 </div>
+					<% if @counter%2 == 0 %>
+								</div>
+							</div>
+					<% end %>
+					<% @counter += 1 %>
+					<% end %>
+					
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row-fluid">
+    <div class="span12"></div>
+    <div class="span12"></div>
+    <div class="span12">
+        <div class="span4"></div>
+        <div class="span4"></div>
+        <div class="span4">
+			<% if (params[:list].split(',')).length <= 0 %>
+				<%= link_to "Final Outfit has no clothes. Get some clothes!", '#', :class => "btn btn-primary" %>
+			<% elsif (params[:list].split(',')).length == 1 %>
+				<%= link_to "Final Outfit has just one piece of clothes. Get more!", '#', :class => "btn btn-primary" %>
+			<% else %>
+				<%= link_to "Final Outfit has "+ (params[:list].split(',')).length.to_s + " clothes. Check the mirror!", dress_path(:user_id => params[:user_id], :formal => params[:formal], :color => params[:color], :material => params[:material], :model => params[:model], :list => params[:list]), :class => "btn btn-success" %>
+			<% end %> 
+        </div>
+    </div>
+</div>    
+<%= render :file => "partials/_footer" %>
+</div>
+</div>
+</div>
+<%= render :file => "partials/_javascripts" %>
+
+</body>
+</html>
+
+<% end %>

@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>woRg &middot; Your wardrobe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- Le styles -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/bootswatch.css" rel="stylesheet">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="/home.html">woRg</a>
+
+            <div class="nav-collapse collapse" id="main-menu">
+                <ul class="nav" id="main-menu-left">
+                    <li><a id="outfit" href="/outfit.html">Dress me up!</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Wardrobes <b class="caret"></b></a>
+                        <ul class="dropdown-menu" id="ward-menu">
+                            <li><a href="/wardrobe.html">Wardrobe #1</a></li>
+                            <li><a href="/wardrobe.html">Wardrobe #2</a></li>
+                            <li><a href="/wardrobe.html">Wardrobe #3</a></li>
+                        </ul>
+                    </li>
+                    <li><a id="settings" href="/settings.html">Settings</a></li>
+                </ul>
+                <ul class="nav pull-right" id="main-menu-right">
+                    <form class="navbar-search pull-left" action="">
+                        <input type="text" class="search-query span3" placeholder="Search for clothes">
+                    </form>
+                    <li><a id="logout" href="/logout.html">Log out</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+
+<div class="container">
+<div class="row-fluid">
+<div class="span12">
+    <div class="span6">
+    <h1>Take a look inside wardrobe XXX!</h1>
+    </div>
+    <div class="span6">
+        <!-- Button to trigger modal -->
+        <a href="#clothes" role="button" class="btn btn-success span8 offset3" data-toggle="modal"><b>Add piece of clothing</b></a>
+
+        <!-- Modal -->
+        <div id="clothes" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="clothesLabel"
+             aria-hidden="true">
+            <div class="modal-header">
+                <h3 id="clothesLabel">Clothes wizard</h3>
+            </div>
+            <div class="modal-body">
+                <form class="form-vertical well span12">
+                    <fieldset>
+                        <div class="control group">
+                            <label for="type">Type</label>  
+                            <select id="type" required>
+                            <option value="">Cloth type...</option>
+                            <option value="one">Underwear etc</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="control group">
+                            <label for="formality">Formal/Informal wear</label>  
+                            <select id="formality" required>
+                            <option value="">Please select</option>
+                            <option value="one">Semi-formal</option>
+                            <option value="one">Informal</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="control group">
+                            <label for="Pcol">Primary color</label>  
+                            <select id="Pcol" required>
+                            <option value="">Color...</option>
+                            <option value="one">etc</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="control group">
+                            <label for="Scol">Secondary color</label>  
+                            <select id="Scol">
+                            <option>Color...</option>
+                            <option>etc</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="control group">
+                            <label for="Pmod">Primary model</label>  
+                            <select id="Pmod" required>
+                            <option value="">Model type...</option>
+                            <option value="one">etc</option>
+                            </select>
+                        </div>
+                        <div class="control group">
+                            <label for="Smod">Secondary model</label>  
+                            <select id="Smod">
+                            <option>Model type...</option>
+                            <option>etc</option>
+                            </select>
+                        </div>
+                        <br>
+                         <div class="control group">
+                            <label for="Pmat">Primary material</label>  
+                            <select id="Pmat">
+                            <option>Mat type...</option>
+                            <option>etc</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="control group">
+                            <label for="Smat">Secondary material</label>  
+                            <select id="Smat">
+                            <option>Mat type...</option>
+                            <option>etc</option>
+                            </select>
+                        </div>
+                        <br>
+                        <div class="fileupload fileupload-new" data-provides="fileupload">
+                            <div class="fileupload-new">Select photo</div>
+                            <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;"><img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" /></div>
+                            <div>
+                                <input type="file" />
+                                <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove photo</a>
+                            </div>
+                        </div>
+                        <div class="control group">
+                            <label for="description">Description</label>
+                            <textarea class="input-xlarge" id="description" maxlength=80 rows="3">Max. 80 characters</textarea>
+                        </div>    
+                        <div class="control group">
+                            <label for="rating">Rating</label>  
+                            <select id="rating" required>
+                            <option value="">Please select...</option>
+                            <option value="one">1</option>
+                            <option value="one">2</option>
+                            <option value="one">3</option>
+                            <option value="one">4</option>
+                            <option value="one">5</option>
+                            </select>
+                        </div>
+                        <br>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-success" href="/wardrobe.html" type="submit">Save changes</a>
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="row-fluid">
+<div class="span12">
+    <div class="span6"></div>
+    <div class="span6">
+        <a class="btn btn-primary span8 offset3" href="/home.html"><b>Delete wardrobe</b></a>
+    </div>
+</div>
+<div class="span10"></div>
+<div class="span12">
+    <div class="well span11">
+        <ul class="thumbnails">
+            <li class="span4">
+                <div class="thumbnail">
+                    <img data-src="holder.js/260x180" alt="260x180" style="width: 260px; height: 180px;"
+                         src="data:image/png;base64,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">
+
+                    <h3>Type: XXX</h3>
+
+                    <p>Color: XXX</p>
+
+                    <p>Material: XXX</p>
+
+                    <p>Model: XXX</p>
+
+                    <p>Description: My blue red blouse</p>
+
+		    <a class="btn btn-primary" href="/wardrobe.html">Delete item</a>
+                </div>
+            </li>
+
+            <li class="span4">
+                <div class="thumbnail">
+                    <img data-src="holder.js/260x180" alt="260x180" style="width: 260px; height: 180px;"
+                         src="data:image/png;base64,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">
+
+                    <h3>Type: XXX</h3>
+
+                    <p>Color: XXX</p>
+
+                    <p>Material: XXX</p>
+
+                    <p>Model: XXX</p>
+
+                    <p>Description: My blue red blouse</p>
+                    
+                    <a class="btn btn-primary" href="/wardrobe.html">Delete item</a>
+                </div>
+            </li>
+
+            <li class="span4">
+                <div class="thumbnail">
+                    <img data-src="holder.js/260x180" alt="260x180" style="width: 260px; height: 180px;"
+                         src="data:image/png;base64,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">
+
+                    <h3>Type: XXX</h3>
+
+                    <p>Color: XXX</p>
+
+                    <p>Material: XXX</p>
+
+                    <p>Model: XXX</p>
+
+                    <p>Description: My blue red blouse</p>
+                    
+                    <a class="btn btn-primary" href="/wardrobe.html">Delete item</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="span10"></div>
+<div class="span12">
+    <div class="well span11">
+        <ul class="thumbnails">
+            <li class="span4">
+                <div class="thumbnail">
+                    <img data-src="holder.js/260x180" alt="260x180" style="width: 260px; height: 180px;"
+                         src="data:image/png;base64,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">
+
+                    <h3>Type: XXX</h3>
+
+                    <p>Color: XXX</p>
+
+                    <p>Material: XXX</p>
+
+                    <p>Model: XXX</p>
+
+                    <p>Description: My blue red blouse</p>
+                    
+                    <a class="btn btn-primary" href="/wardrobe.html">Delete item</a>
+                </div>
+            </li>
+
+            <li class="span4">
+                <div class="thumbnail">
+                    <img data-src="holder.js/260x180" alt="260x180" style="width: 260px; height: 180px;"
+                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQQAAAC0CAYAAABytVLLAAAK+klEQVR4Xu2aB4sUSxRGa805o2IWI2LEnDD9cXPOipgzZtec03tfQQ/juvv2W3nKwHcaxN3ZOz11z+06Xbd6urq7u38UDghAAAL/EuhCCFwHEIBAQwAhcC1AAAItAgiBiwECEEAIXAMQgMCvBFghcFVAAAKsELgGIAABVghcAxCAwH8QoGXg8oAABGgZuAYgAAFaBq4BCECAloFrAAIQcAiwh+BQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEKHFfrbt2/lyZMn9d+rV6/K5MmTy/Tp08ukSZNKV1dXa7Tv3r0r165dK69fvy4jR44sU6dOLbNnzy6DBg1qxTx8+LDcuXOnfPz4sYwePbosXry4jB8//rcy/v79ezl+/Hh5+/ZtWb16dZkyZUrrPF+/fi2PHj0qT58+LW/evKlj1Xj0r/34P8fzW0nwpn4JIIR+Ef3dgEuXLpUHDx788qErVqwo06ZNq69LBidOnCiaiJLEjx8/6utLliypUtAhoZw/f/6n80gWmzdvrgIZ6HHlypVy7969+raeQrh582bRPx1Dhgyp49Kxbt26MmHChD8ynoGOn3iPAELwOP2VqM+fP5f9+/fXz1q6dGldGWii3b17t04sTTAdFy5cKI8fP6536WXLlpUXL17U17QK2LRpU5WEhKEVxpw5c8qCBQvKmTNnysuXL+vvWim4x/v378vVq1fLs2fPWm9pF4JkdPDgwfLp06eWKG7cuFFu3bpVVwgrV66s7/u/xuOOm7jfI4AQfo/bH3mX7vwSgO6wmnSa2FqCHzt2rH7erl276v979+6tq4KNGzeWsWPH1tf0Ht2ddbSLZcuWLWXUqFF1SX/x4sW6Oti6dWttJdRy6Fi/fn1tJbQy0QpFn7thw4Z67tOnT5fu7u7aBqg9acbW3jIcPny4SBxr1qypLU4jhFmzZlWxOeP5I0A56YAJIIQBI/u7b9AyXcv1ESNGlG3bttV24ciRI3UQutNrYmsCq51YuHDhLxLZvXt33VfQ6uDkyZNl8ODBVSwSin7XKmLcuHFl1apV9bya8PPnz6+rCh2SiCa/VitaCWg/omfLoHMrTn9rWgYJRm2Oxt0utb7G83ep8ml9EUAIHXxt6K6rSas77KJFi8rcuXNre3Dq1KnWqHX3//DhQ53gmsSazM+fP68tgkSxZ8+eGqu7uzYFdezYsaMMHTq0bhDqNW0YauWg86jt0Mqj2ZzUeZvNzL6EIBHo8ySr5tCKQu2CBOGOp4NLETM0hNChpdbk1MTXZNPddu3atXWSNpNLw272AxpJaDJr07C/Cbhz585We3H79u1y/fr1SkETX+2DVgy9HX0JoXldMpoxY0ZtGdSiqH1QGzGQ8XRoOWKGhRA6sNSSgGQgKaiPlwya/YH2lqHp/ZXCvn37ypcvX+qmYvOIUK9rhaCJ3rNlaNLWZqAmtFYCWiVIKO2PLtvx9CYErTKOHj1ax6eVhz5LKxvtK+hnvabfm9VJf+PpwHJEDQkhdFi51cNrR14Tf8yYMVUGWt43h/6uTUUdy5cvr729JrOEoL/pSYT6dk1eHdpA1ETvuanYnE+9v/7WHE3b4a4Qmru/9iY0+SUTiezQoUP1FNr30OGOp8PKETcchNBhJW8eKeqOq827dhlov0B3XfXrmogTJ06sUlDLoImtybh9+/b6Hj2Z0Gae2gptNp47d66+R99T0PcVdOhR4tmzZ+vPEovEoHNoD0HtR8+jtxWCVhgHDhyooTrvzJkzawuiR6XKQe2JDmc8HVaKyOEghA4qu1qF5k7a27A02YcPH16X/3ocqNag/YtJ8+bNq5NfR7Mi0M9NTPsXk7Sa0FMFTWg9HtRk1tJfKxPtWWil0f7NyOYu39tTBn1PQQLQoc/QuBpBNF+U6m88HVSG6KEghA4qvyaVJldfRyME/V1S0Oadnh6oRdCdWauB9kOTUI8lm6cH7V9dvnz5crl//34ZNmxY0XcVdDdvf4LR/q3H5px9bSqqZdHXlvV5+s6CxiMRaEzueDqoDNFDQQjR5Sd5CPxMACFwRUAAAi0CCIGLAQIQQAhcAxCAwK8EWCFwVUAAAqwQuAYgAAFWCFwDEIDAfxCgZeDygAAEaBm4BiAAAVoGrgEIQICWgWsAAhBwCLCH4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOgX8AWPnaVMXY0N4AAAAASUVORK5CYII=">
+
+                    <h3>Type: XXX</h3>
+
+                    <p>Color: XXX</p>
+
+                    <p>Material: XXX</p>
+
+                    <p>Model: XXX</p>
+
+                    <p>Description: My blue red blouse</p>
+                    
+                    <a class="btn btn-primary" href="/wardrobe.html">Delete item</a>
+                </div>
+            </li>
+
+            <li class="span4">
+                <div class="thumbnail">
+                    <img data-src="holder.js/260x180" alt="260x180" style="width: 260px; height: 180px;"
+                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQQAAAC0CAYAAABytVLLAAAK+klEQVR4Xu2aB4sUSxRGa805o2IWI2LEnDD9cXPOipgzZtec03tfQQ/juvv2W3nKwHcaxN3ZOz11z+06Xbd6urq7u38UDghAAAL/EuhCCFwHEIBAQwAhcC1AAAItAgiBiwECEEAIXAMQgMCvBFghcFVAAAKsELgGIAABVghcAxCAwH8QoGXg8oAABGgZuAYgAAFaBq4BCECAloFrAAIQcAiwh+BQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEKHFfrbt2/lyZMn9d+rV6/K5MmTy/Tp08ukSZNKV1dXa7Tv3r0r165dK69fvy4jR44sU6dOLbNnzy6DBg1qxTx8+LDcuXOnfPz4sYwePbosXry4jB8//rcy/v79ezl+/Hh5+/ZtWb16dZkyZUrrPF+/fi2PHj0qT58+LW/evKlj1Xj0r/34P8fzW0nwpn4JIIR+Ef3dgEuXLpUHDx788qErVqwo06ZNq69LBidOnCiaiJLEjx8/6utLliypUtAhoZw/f/6n80gWmzdvrgIZ6HHlypVy7969+raeQrh582bRPx1Dhgyp49Kxbt26MmHChD8ynoGOn3iPAELwOP2VqM+fP5f9+/fXz1q6dGldGWii3b17t04sTTAdFy5cKI8fP6536WXLlpUXL17U17QK2LRpU5WEhKEVxpw5c8qCBQvKmTNnysuXL+vvWim4x/v378vVq1fLs2fPWm9pF4JkdPDgwfLp06eWKG7cuFFu3bpVVwgrV66s7/u/xuOOm7jfI4AQfo/bH3mX7vwSgO6wmnSa2FqCHzt2rH7erl276v979+6tq4KNGzeWsWPH1tf0Ht2ddbSLZcuWLWXUqFF1SX/x4sW6Oti6dWttJdRy6Fi/fn1tJbQy0QpFn7thw4Z67tOnT5fu7u7aBqg9acbW3jIcPny4SBxr1qypLU4jhFmzZlWxOeP5I0A56YAJIIQBI/u7b9AyXcv1ESNGlG3bttV24ciRI3UQutNrYmsCq51YuHDhLxLZvXt33VfQ6uDkyZNl8ODBVSwSin7XKmLcuHFl1apV9bya8PPnz6+rCh2SiCa/VitaCWg/omfLoHMrTn9rWgYJRm2Oxt0utb7G83ep8ml9EUAIHXxt6K6rSas77KJFi8rcuXNre3Dq1KnWqHX3//DhQ53gmsSazM+fP68tgkSxZ8+eGqu7uzYFdezYsaMMHTq0bhDqNW0YauWg86jt0Mqj2ZzUeZvNzL6EIBHo8ySr5tCKQu2CBOGOp4NLETM0hNChpdbk1MTXZNPddu3atXWSNpNLw272AxpJaDJr07C/Cbhz585We3H79u1y/fr1SkETX+2DVgy9HX0JoXldMpoxY0ZtGdSiqH1QGzGQ8XRoOWKGhRA6sNSSgGQgKaiPlwya/YH2lqHp/ZXCvn37ypcvX+qmYvOIUK9rhaCJ3rNlaNLWZqAmtFYCWiVIKO2PLtvx9CYErTKOHj1ax6eVhz5LKxvtK+hnvabfm9VJf+PpwHJEDQkhdFi51cNrR14Tf8yYMVUGWt43h/6uTUUdy5cvr729JrOEoL/pSYT6dk1eHdpA1ETvuanYnE+9v/7WHE3b4a4Qmru/9iY0+SUTiezQoUP1FNr30OGOp8PKETcchNBhJW8eKeqOq827dhlov0B3XfXrmogTJ06sUlDLoImtybh9+/b6Hj2Z0Gae2gptNp47d66+R99T0PcVdOhR4tmzZ+vPEovEoHNoD0HtR8+jtxWCVhgHDhyooTrvzJkzawuiR6XKQe2JDmc8HVaKyOEghA4qu1qF5k7a27A02YcPH16X/3ocqNag/YtJ8+bNq5NfR7Mi0M9NTPsXk7Sa0FMFTWg9HtRk1tJfKxPtWWil0f7NyOYu39tTBn1PQQLQoc/QuBpBNF+U6m88HVSG6KEghA4qvyaVJldfRyME/V1S0Oadnh6oRdCdWauB9kOTUI8lm6cH7V9dvnz5crl//34ZNmxY0XcVdDdvf4LR/q3H5px9bSqqZdHXlvV5+s6CxiMRaEzueDqoDNFDQQjR5Sd5CPxMACFwRUAAAi0CCIGLAQIQQAhcAxCAwK8EWCFwVUAAAqwQuAYgAAFWCFwDEIDAfxCgZeDygAAEaBm4BiAAAVoGrgEIQICWgWsAAhBwCLCH4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOAYTgUCIGAiEEEEJIoUkTAg4BhOBQIgYCIQQQQkihSRMCDgGE4FAiBgIhBBBCSKFJEwIOgX8AWPnaVMXY0N4AAAAASUVORK5CYII=">
+
+                    <h3>Type: XXX</h3>
+
+                    <p>Color: XXX</p>
+
+                    <p>Material: XXX</p>
+
+                    <p>Model: XXX</p>
+
+                    <p>Description: My blue red blouse</p>
+                    
+                    <a class="btn btn-primary" href="/wardrobe.html">Delete item</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="span10"></div>
+<div class="span12">
+    <div class="well span11">
+        <ul class="thumbnails">
+            <li class="span4">
+                <div class="thumbnail">
+                    <img data-src="holder.js/260x180" alt="260x180" style="width: 260px; height: 180px;"
+                         src="data:image/png;base64,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">
+
+                    <h3>Type: XXX</h3>
+
+                    <p>Color: XXX</p>
+
+                    <p>Material: XXX</p>
+
+                    <p>Model: XXX</p>
+
+                    <p>Description: My blue red blouse</p>
+                    
+                    <a class="btn btn-primary" href="/wardrobe.html">Delete item</a>
+                </div>
+            </li>
+
+            <li class="span4">
+                <div class="thumbnail">
+                    <img data-src="holder.js/260x180" alt="260x180" style="width: 260px; height: 180px;"
+                         src="data:image/png;base64,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">
+
+                    <h3>Type: XXX</h3>
+
+                    <p>Color: XXX</p>
+
+                    <p>Material: XXX</p>
+
+                    <p>Model: XXX</p>
+
+                    <p>Description: My blue red blouse</p>
+                    
+                    <a class="btn btn-primary" href="/wardrobe.html">Delete item</a>
+                </div>
+            </li>
+
+            <li class="span4">
+                <div class="thumbnail">
+                    <img data-src="holder.js/260x180" alt="260x180" style="width: 260px; height: 180px;"
+                         src="data:image/png;base64,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">
+
+                    <h3>Type: XXX</h3>
+
+                    <p>Color: XXX</p>
+
+                    <p>Material: XXX</p>
+
+                    <p>Model: XXX</p>
+
+                    <p>Description: My blue red blouse</p>
+                    
+                    <a class="btn btn-primary" href="/wardrobe.html">Delete item</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="span10"></div>
+<div class="span12">
+    <div class="span4"></div>
+    <div class="span4"></div>
+    <div class="span4">
+        <ul class="pager">
+            <li><a href="#">Previous</a></li>
+            <li><a href="#">Next</a></li>
+        </ul>
+    </div>
+</div>
+<div class="span12">
+    <div class="span6">
+        <!-- Button to trigger modal -->
+        <div class="span3">
+            <a href="#about" role="button" class="btn btn-info span8 offset3" data-toggle="modal">About</a>
+
+            <!-- Modal -->
+            <div id="about" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="aboutLabel"
+                 aria-hidden="true">
+                <div class="modal-header">
+                    <h3 id="aboutLabel">About</h3>
+                </div>
+                <div class="modal-body">
+                    <p>The about page. Tudor needs to write sth here!</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="span3">
+            <!-- Button to trigger modal -->
+            <a href="#help" role="button" class="btn btn-info span8 offset3" data-toggle="modal">Help</a>
+
+            <!-- Modal -->
+            <div id="help" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="helpLabel"
+                 aria-hidden="true">
+                <div class="modal-header">
+                    <h3 id="helpLabel">Help</h3>
+                </div>
+                <div class="modal-body">
+                    <p>Contact details here</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="span3">
+            <!-- Button to trigger modal -->
+            <a href="#contact" role="button" class="btn btn-info span8 offset3" data-toggle="modal">Contact</a>
+
+            <!-- Modal -->
+            <div id="contact" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="contactLabel"
+                 aria-hidden="true">
+                <div class="modal-header">
+                    <h3 id="contactLabel">Contact &amp; Feedback</h3>
+                </div>
+                <div class="modal-body">
+                    <p>Contact details here</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="span6"></div>
+    <div class="span11"></div>
+</div>
+
+<footer class="footer span12">
+    <div class="container span9 offset2">
+        <p>Code licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache
+            License
+            v2.0</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+            <a href="http://glyphicons.com">Glyphicons Free</a> licensed under <a
+                    href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+            <small>
+                &copy 2013. woRg
+            </small>
+        </p>
+    </div>
+</footer>
+</div>
+</div>
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="/js/jquery.smooth-scroll.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/bootswatch.js"></script>
+</body>
+</html>

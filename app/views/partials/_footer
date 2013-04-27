@@ -1,0 +1,168 @@
+<div class="row-fluid">
+	<div class="span12"></div>
+    <div class="span12">
+        <div class="span6">
+            <!-- Button to trigger modal -->
+            <div class="span3">
+                <a href="#about" role="button" class="btn btn-info span8 offset3" data-toggle="modal">About</a>
+
+                <!-- Modal -->
+                <div id="about" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="aboutLabel"
+                     aria-hidden="true">
+                    <div class="modal-header">
+                        <h3 id="aboutLabel">About</h3>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                        <h5>Idea:</h5>
+                        As a project for a school course, three students wanted to create a practical tool used to
+                        generate outfits for people with a lot of choices and not enough time, given the pieces of
+                        clothing available.
+                        </p>
+                        <p>
+                        <h5> Objective:</h5>
+                        Shorten the time spent selecting clothes and matching them into appropriate attires.
+                        Pick you own items or use a generated one and consider the weather when choosing one of
+                        the suggested options.
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="span3">
+                <!-- Button to trigger modal -->
+                <a href="#help" role="button" class="btn btn-info span8 offset3" data-toggle="modal">Help</a>
+
+                <!-- Modal -->
+                <div id="help" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="helpLabel"
+                     aria-hidden="true">
+                    <div class="modal-header">
+                        <h3 id="helpLabel">Help</h3>
+                    </div>
+                    <div class="modal-body">
+                        <h4>Instructions:</h4>
+
+                        <p><h5>Creating an account:</h5> enter a username, password and e-mail as well as your birth
+                        date
+                        and
+                        press <b>Register</b> in order to generate a new account.</p>
+
+                        <p><h5>Logging in:</h5> If you already have an account, enter the e-mail and password used at
+                        registration in the corresponding fields and press <b>Login</b>.</p>
+
+                        <p><h5>Adding wardrobes:</h5> immediately after registering, press the <b>Add wardrobe</b>
+                        button to create your first wardrobe. If you already have one created, press the
+                        same button in the center of the page. After this, insert the name, location and
+                        description of the newly created wardrobe and press <b>Create wardrobe</b>.</p>
+
+                        <p><h5>Homepage:</h5> While you are on a page, clicking the <b>woRg</b> button in the top-left
+                        corner will redirect you to the main page.</p>
+
+                        <p><h5>Generating outfits:</h5> Start by clicking the <b>Dress me up!</b> button in
+                        the top menu. Then select the search criteria you want and click <b>Show
+                        me what I've got!</b> to see the results. There are two possible
+                        outcomes: either the search returned no result, in which case
+                        you can retry by clicking <b>Search again!</b>, or an
+                        affirmative answer is shown telling you how many outfits
+                        were generated. You can then check them out by pressing the
+                        corresponding button.</p>
+
+                        <p><h5>Selecting outfits:</h5> Each piece of clothing can be
+                        individually selected from the suggested set. Proceed by
+                        pressing <b>Take me to the dressing room</b> to see the
+                        final outfit which you can either accept (and press <b>Yep!
+                        I'll wear these!</b>) or reject and going back to
+                        the results page (by selecting <b>No way! I am going
+                        back to the results!</b>).</p>
+
+                        <p><h5>Browsing wardrobes:</h5> The process of generating
+                        and choosing an outfit can be done using the
+                        clothes in each wardrobe. Simply select the
+                        desired one from the drop-list <b>Wardrobes</b>
+                        top menu and browse the items. You can also
+                        add a piece of clothing by pressing the
+                        corresponding button on the top-right,
+                        entering the required parameters and
+                        clicking <b>Save changes</b>.</p>
+
+                        <p><h5>Changing the password:</h5> It can be done
+                        from <b>Settings</b> in the top
+                        menu.</p>
+
+                        <p><h5>Preferences:</h5> Changeable by entering
+                        the <b>Setting</b> page in the top
+                        menu and selecting the first,
+                        second and third favourite
+                        color, material and model.</p>
+
+                        <p><h5>Searching clothes:</h5> Entering a
+                        keyword in the top-right corner
+                        field will search all pieces of
+                        clothing related to that query
+                        (e.g. searching "stripes" will
+                        generate a list of the clothes
+                        in all wardrobes with a stripes
+                        model).</p>
+
+                        <p>In order to access this guide
+                            again, press <b>Help</b> button
+                            on the bottom of any page on
+                            the website.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="span3">
+                <!-- Button to trigger modal -->
+                <a href="#contact" role="button" class="btn btn-info span8 offset3" data-toggle="modal">Contact</a>
+
+                <!-- Modal -->
+                <div id="contact" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="contactLabel"
+                     aria-hidden="true">
+                    <div class="modal-header">
+                        <h3 id="contactLabel">Contact &amp; Feedback</h3>
+                    </div>
+                    <div class="modal-body">
+                        <p><h4>Please send messages/suggestions to:</h4>
+                        <a href="mailto:worg@gmail.com"><h5>worg@gmail.com</h5></a></p>
+                        <p><h4>Send complaints to:</h4> <a href="mailto:worg@gmail.com"><h5>worg@gmail.com</h5></a></p>
+                        <p><h4>Adress of Olariu/Panea/Stoica:<br> Campus Ring 1, Jacobs University, 28759 Bremen
+                    </h4></p>
+                        <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+                                src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=ro&amp;geocode=&amp;q=campus+ring+1&amp;aq=&amp;sll=52.708238,0.769556&amp;sspn=7.431964,19.753418&amp;t=h&amp;ie=UTF8&amp;hq=&amp;hnear=Campus+Ring+1,+28759+Bremen,+Germania&amp;ll=53.168412,8.647699&amp;spn=0.007178,0.01929&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe>
+                        <br/>
+                        <small><a
+                                href="http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=ro&amp;geocode=&amp;q=campus+ring+1&amp;aq=&amp;sll=52.708238,0.769556&amp;sspn=7.431964,19.753418&amp;t=h&amp;ie=UTF8&amp;hq=&amp;hnear=Campus+Ring+1,+28759+Bremen,+Germania&amp;ll=53.168412,8.647699&amp;spn=0.007178,0.01929&amp;z=14&amp;iwloc=A"
+                                style="color:#ff2549;text-align:left">Enlarge map</a></small>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="span6"></div>
+        <div class="span11"></div>
+    </div>
+
+    <footer class="footer span12">
+        <div class="container span9 offset2">
+            <p>Code licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache
+                License
+                v2.0</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+                <a href="http://glyphicons.com">Glyphicons Free</a> licensed under <a
+                        href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+                <small>
+                    &copy 2013. woRg
+                </small>
+            </p>
+        </div>
+    </footer>
+</div>
+

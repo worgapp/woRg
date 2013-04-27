@@ -1,0 +1,104 @@
+<% if params[:user_id] == nil %>
+	<%= render :file => "partials/_login" %>
+<% else %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>woRg &middot; Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- Le styles -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/bootswatch.css" rel="stylesheet">
+</head>
+<body>
+
+<%= render :file => "partials/_navigation_bar" %>
+
+<br>
+<br>
+<br>
+<br>
+
+<div class="container">
+    <div class="row-fluid">
+        <div class="span12">
+			<% @session = SessionController.new %>
+            <h1>Welcome, <%= @session.get_name(params[:user_id]) %>!</h1>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <div class="well span6">
+            <div class="span8">
+				<% @wardrobe = WardrobeController.new %>
+				<% @nr = @wardrobe.get_wardrobe_number(params[:user_id]) %>
+				<% if @nr <= 0 %>
+	                <h3>You have no wardrobes available</h3>
+				<% elsif @nr == 1 %>
+					<h3>You have 1 wardrobe available</h3>
+				<% else %>
+					<h3>You have <%= @nr %> wardrobes available</h3>
+				<% end %>
+            </div>
+            <!-- Button to trigger modal -->
+            <a href="#wardrobe" role="button" class="btn btn-primary span3" data-toggle="modal"><b>Add wardrobe</b></a>
+
+            <!-- Modal -->
+            <%= form_tag({:controller => "wardrobe", :action => "wardrobe", :user_id => params[:user_id]}, {:method => "post"}) do %>
+		    <div id="wardrobe" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="wardrobeLabel"
+                 aria-hidden="true">
+
+            	<div class="modal-header">
+                    <h3 id="wardrobeLabel">Wardrobe wizard</h3>
+                </div>
+				<div class="modal-body">
+            		<div class="control group">
+                    	<%= text_field_tag(:name, nil, {:class => "input-large span6", :placeholder => "Wardrobe Name"}) %>	
+                    </div>
+				</div>
+            	<div class="modal-footer">
+            	    <%= submit_tag("Create wardrobe", {:class => "btn btn-success"}) %>
+					<button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>                 	
+           		</div>
+			</div>
+			<% end %>
+			
+        </div>
+        <div class="well span4 offset1">
+            <h5>Weather at your location:</h5>
+
+            <div class="span12">
+                <script type="text/javascript"
+                        src="http://cdn.widgetserver.com/syndication/subscriber/InsertWidget.js"></script>
+                <script type="text/javascript">if (WIDGETBOX) WIDGETBOX.renderWidget('1cf80efd-0ccf-4233-b89d-34f9b66f4b61');</script>
+                <noscript>Get the <a href="http://www.widgetbox.com/widget/weatherwidget">YoWindow Weather</a> widget
+                    and
+                    many other <a href="http://www.widgetbox.com/">great free widgets</a> at <a
+                            href="http://www.widgetbox.com">Widgetbox</a>! Not seeing a widget? (<a
+                            href="http://support.widgetbox.com/">More info</a>)
+                </noscript>
+            </div>
+        </div>
+	</div>
+
+<%= render :file => "partials/_footer" %>
+    
+</div>
+
+<%= render :file => "partials/_javascripts" %>
+
+</body>
+</html>
+
+<% end %>

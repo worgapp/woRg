@@ -1,0 +1,201 @@
+<% if params[:user_id] == nil %>
+	<%= render "login" %>
+<% else %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>woRg &middot; Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- Le styles -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/bootswatch.css" rel="stylesheet">
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="/home.html">woRg</a>
+
+            <div class="nav-collapse collapse" id="main-menu">
+                <ul class="nav" id="main-menu-left">
+                    <li><a id="outfit" href="/outfit.html">Dress me up!</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Wardrobes <b class="caret"></b></a>
+                        <ul class="dropdown-menu" id="ward-menu">
+                            <li><a href="/wardrobe.html">Wardrobe #1</a></li>
+                            <li><a href="/wardrobe.html">Wardrobe #2</a></li>
+                            <li><a href="/wardrobe.html">Wardrobe #3</a></li>
+                        </ul>
+                    </li>
+                    <li><a id="settings" href="/settings.html">Settings</a></li>
+                </ul>
+                <ul class="nav pull-right" id="main-menu-right">
+                    <form class="navbar-search pull-left" action="">
+                        <input type="text" class="search-query span3" placeholder="Search for clothes">
+                    </form>
+                    <li><a id="logout" href="/logout.html">Log out</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+
+<div class="container">
+    <div class="row-fluid">
+        <div class="span12">
+            <h1>Welcome, <%= params[:first_name] %>!</h1>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <div class="well span6">
+            <div class="span8">
+                <h3>You have X wardrobes available</h3>
+            </div>
+            <!-- Button to trigger modal -->
+            <a href="#wardrobe" role="button" class="btn btn-primary span3" data-toggle="modal"><b>Add wardrobe</b></a>
+
+            <!-- Modal -->
+            <div id="wardrobe" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="wardrobeLabel"
+                 aria-hidden="true">
+                <div class="modal-header">
+                    <h3 id="wardrobeLabel">Wardrobe wizard</h3>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal well span12">
+                        <div class="control group">
+                            <input type="text" class="input-large span6" placeholder="Wardrobe Name" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success">Create wardrobe</button>
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                </div>
+            </div>
+        </div>
+        <div class="well span4 offset1">
+            <h5>Weather at your location:</h5>
+
+            <div class="span12">
+                <script type="text/javascript"
+                        src="http://cdn.widgetserver.com/syndication/subscriber/InsertWidget.js"></script>
+                <script type="text/javascript">if (WIDGETBOX) WIDGETBOX.renderWidget('1cf80efd-0ccf-4233-b89d-34f9b66f4b61');</script>
+                <noscript>Get the <a href="http://www.widgetbox.com/widget/weatherwidget">YoWindow Weather</a> widget
+                    and
+                    many other <a href="http://www.widgetbox.com/">great free widgets</a> at <a
+                            href="http://www.widgetbox.com">Widgetbox</a>! Not seeing a widget? (<a
+                            href="http://support.widgetbox.com/">More info</a>)
+                </noscript>
+            </div>
+        </div>
+        <div class="span11"></div>
+        <div class="span12">
+            <div class="span6">
+                <!-- Button to trigger modal -->
+                <div class="span3">
+                    <a href="#about" role="button" class="btn btn-info span8 offset3" data-toggle="modal">About</a>
+
+                    <!-- Modal -->
+                    <div id="about" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="aboutLabel"
+                         aria-hidden="true">
+                        <div class="modal-header">
+                            <h3 id="aboutLabel">About</h3>
+                        </div>
+                        <div class="modal-body">
+                            <p>The about page. Tudor needs to write sth here!</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="span3">
+                    <!-- Button to trigger modal -->
+                    <a href="#help" role="button" class="btn btn-info span8 offset3" data-toggle="modal">Help</a>
+
+                    <!-- Modal -->
+                    <div id="help" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="helpLabel"
+                         aria-hidden="true">
+                        <div class="modal-header">
+                            <h3 id="helpLabel">Help</h3>
+                        </div>
+                        <div class="modal-body">
+                            <p>Contact details here</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="span3">
+                    <!-- Button to trigger modal -->
+                    <a href="#contact" role="button" class="btn btn-info span8 offset3" data-toggle="modal">Contact</a>
+
+                    <!-- Modal -->
+                    <div id="contact" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="contactLabel"
+                         aria-hidden="true">
+                        <div class="modal-header">
+                            <h3 id="contactLabel">Contact &amp; Feedback</h3>
+                        </div>
+                        <div class="modal-body">
+                            <p>Contact details here</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="span6"></div>
+            <div class="span11"></div>
+        </div>
+
+        <footer class="footer span12">
+            <div class="container span9 offset2">
+                <p>Code licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache
+                    License
+                    v2.0</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+                    <a href="http://glyphicons.com">Glyphicons Free</a> licensed under <a
+                            href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+                    <small>
+                        &copy 2013. woRg
+                    </small>
+                </p>
+            </div>
+        </footer>
+    </div>
+</div>
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="/js/jquery.smooth-scroll.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/bootswatch.js"></script>
+</body>
+</html>
+
+<% end %>

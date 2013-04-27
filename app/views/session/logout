@@ -1,0 +1,139 @@
+<% if params[:user_id] != nil %>
+	<% params[:user_id] = nil %>
+<% else %>
+	<% if params[:email] != nil %>
+		<% @session = SessionController.new %>		
+		<% if params[:commit] == "Login again?" %>
+			<% @session.set_credentials(params) %>		
+			<% params[:message] = @session.login %>
+		<% end %>
+		<% if @session.isOpen? %>
+			<% params[:user_id] = @session.get_user_id %>
+			<%= render :file => "partials/_home" %>
+		<% end %>		
+	<% end %>
+<% end %>
+
+<% if params[:user_id] == nil %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>woRg &middot; Logged out</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- Le styles -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/bootswatch.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="container">
+    <div class="row-fluid">
+        <div class="page-header span12">
+            <div class="span12"><h1>We hope you enjoyed the <b>woRg</b> experience!</h1></div>
+        </div>
+        <div class="span11">
+            <%= form_tag({:controller => "session", :action => "logout"}, {:method => "post", :class => "form-horizontal well span12"}) do %>
+		    	<fieldset class="span12">				
+					<% if params[:message] != nil and params[:commit] == "Login again?" %>			
+						<font color="red"><%= params[:message] %></font>		
+					<% end %>	
+					<div class="control-group">
+						<%= email_field(:email, nil, {:class => "input-small span5", :placeholder => "Email"}) %>
+						<%= password_field_tag(:password, nil, {:class => "input-small span5", :placeholder => "Password"}) %>					
+						<%= submit_tag("Login again?", {:class => "btn btn-success"}) %>
+						<div class="help-block"><a href="\f_pwd">Forgotten password?</a></p>
+		            </div>
+				</fieldset>
+			<% end %>
+        </div>
+    </div>
+    <div class="row">
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="span4">
+            <!-- Button to trigger modal -->
+            <a href="#myModal" role="button" class="btn" data-toggle="modal">IMPRINT</a>
+
+            <!-- Modal -->
+            <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                 aria-hidden="true">
+                <div class="modal-header">
+                    <h3 id="myModalLabel">Imprint</h3>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Tudor Olariu, Razvan-Ioan Panea, Razvan-Andrei Stoica
+                        <br>
+                        Jacobs University Bremen
+                        <br>
+                        Campus Ring 1
+                        <br>
+                        28759 Bremen
+                        <br>
+                        Germany
+                    </p>
+
+                    <p>
+                        For each external link existing on this website, we initially have checked that the target page
+                        does
+                        not contain contents which is illegal wrt. German jurisdiction. However, as we have no influence
+                        on
+                        such contents, this may change without our notice. Therefore we distance ourselves from the
+                        contents
+                        of any website referenced through our external links.
+                    </p>
+
+                    <p>
+                        This website is student course work and does not necessarily reflect Jacobs University Bremen
+                        opinions. Jacobs University Bremen does not endorse this site, nor is it checked by Jacobs
+                        University Bremen regularly, nor is it part of the official Jacobs University Bremen web
+                        presence.
+                    </p>
+
+                    <p>
+                        In order to achieve the best experience for this product we are using cutting edge technology as
+                        well as open source projects such as <a href="http://twitter.github.io/bootstrap/">Twitter
+                        Bootstrap</a> and with a modified theme version of originally <a
+                            href="http://bootswatch.com/amelia/">Bootswatch Amelia Theme</a></p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer span12">
+        <div class="container span9 offset2">
+            <p>Code licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License
+                v2.0</a>, documentation under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+                <a href="http://glyphicons.com">Glyphicons Free</a> licensed under <a
+                        href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.
+                <small>
+                    &copy 2013. woRg
+                </small>
+            </p>
+        </div>
+    </footer>
+</div>
+<!-- Le javascript
+  ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="/js/jquery.smooth-scroll.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/bootswatch.js"></script>
+</body>
+</html>
+
+<% end %>

@@ -1,0 +1,38 @@
+<div class="container">
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+			<%= link_to 'woRg', home_path(:user_id => params[:user_id]), :class => "brand" %>
+            
+            <div class="nav-collapse collapse" id="main-menu">
+                <ul class="nav" id="main-menu-left">
+                    <li><%= link_to 'Dress me up!', outfit_path(:user_id => params[:user_id]) %></li>
+					
+					<% @wardrobe = WardrobeController.new %>
+					<% @list = @wardrobe.get_wardrobe_list(params[:user_id]) %>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Wardrobes <b class="caret"></b></a>
+                        <ul class="dropdown-menu" id="ward-menu">
+							<% @list.each do |ward| %>
+								<li><%= link_to "Wardrobe ##{ward[0].to_s}  - \"#{ward[1].to_s}\"", wardrobe_path(:user_id => params[:user_id], :wardrobe_id => ward[0].to_i) %></li>
+							<% end %>
+                        </ul>
+                    </li>
+                    <li><%= link_to 'Settings', settings_path(:user_id => params[:user_id]) %></li>
+                </ul>
+                <ul class="nav pull-right" id="main-menu-right">
+                    <%= form_tag({:controller => "wardrobe", :action => "search", :user_id => params[:user_id]}, {:method => "post", :class => "navbar-search pull-left"}) do %>
+						<% text_field_tag(:search_text, nil, {:class => "search-query span3", :placeholder => "Search for clothes"}) %>
+                    <% end %>
+                    <li><a id="logout" href="/logout">Log out</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

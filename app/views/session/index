@@ -1,0 +1,5 @@
+<% if params[:user_id] != nil %>
+	<%= render :file => "partials/_home" %>
+<% else %>
+	<%= render :file => "partials/_login" %>
+<% end %>

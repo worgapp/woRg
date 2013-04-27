@@ -1,0 +1,88 @@
+<% if params[:user_id] == nil %>
+	<%= render :file => "partials/_login" %>
+<% elsif params[:search_text] != nil %>
+	<% @wardrobe = WardrobeController.new %>
+	<% @wardrobe.set_general_search_data(params) %>
+	<% @result_list = @wardrobe.general_search %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>woRg &middot; Search</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- Le styles -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/bootswatch.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+<%= render :file => "partials/_navigation_bar" %>
+
+<br>
+<br>
+<br>
+<br>
+
+<% @counter = 0 %>
+<% if @result_list.count == 0 %>
+	<h3>There are no results for your search!</h3>
+	<div class="span10"></div>
+	<div class="span10"></div>
+	<div class="span10"></div>
+	<br><br><br><br><br><br>
+<% else %>
+	<h3>There are <%= @result_list.count %> results for your search!</h3>
+	<% @result_list.each do |cloth| %>
+		<% if @counter % 3 == 0 %>
+		<div class="span10"></div>
+		<div class="span12">
+			<div class="well span9 offset1">
+				<ul class="thumbnails">
+		<% end %>
+					<li class="span3">
+						<div class="thumbnail">
+							<%= image_tag(cloth[7].to_s, {:alt => "image", :width => "260", :height => "180"}) %>
+							<h3>Type: <%= @wardrobe.get_type_by_id(cloth[1].to_i) %></h3>
+								
+							<p><b style="font-family:lobster">Formality:</b> <%= @wardrobe.get_formal_by_id(cloth[6].to_i) %></p>
+
+							<p><b style="font-family:lobster">Color:</b> <%= @wardrobe.get_color_by_id(cloth[2].to_i) %></p>
+
+							<p><b style="font-family:lobster">Material:</b> <%= @wardrobe.get_material_by_id(cloth[3].to_i) %></p>
+
+							<p><b style="font-family:lobster">Model:</b> <%= @wardrobe.get_model_by_id(cloth[4].to_i) %></p>
+
+							<p><b style="font-family:lobster">Description:</b> <%= cloth[5].to_s %></p>						
+						</div>
+					</li>
+		<% if @counter % 3 == 2 %>
+		        </ul>
+		    </div>
+		</div>
+		<% end %>
+		<% @counter += 1 %>
+	<% end %>
+	<% if @result_list.count % 3 != 0 %>
+				</ul>
+			</div>
+		</div>
+	<% end %>
+<% end %>
+</div>
+<%= render :file => "partials/_footer" %>
+    
+</div>
+
+<%= render :file => "partials/_javascripts" %>
+</body>
+</html>
+
+<% end %>

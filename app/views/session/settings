@@ -1,0 +1,199 @@
+<% @session = SessionController.new %>
+<% if params[:commit] == "Change password" %>
+	<% @session.set_change_pass(params) %>
+	<% params[:message] = @session.change_password %>
+	<% if params[:message] == nil %>
+		<%= render :file => "partials/_home" %>
+	<% end %>
+<% elsif params[:commit] == "Save changes" %>
+	<% @session.set_profile(params) %>
+	<% if @session.profileExists? %>
+		<% params[:message] = @session.change_profile %>
+	<% else %>	
+		<% params[:message] = @session.create_profile %>
+	<% end %>
+	<% if params[:message] == nil %>
+		<%= render :file => "partials/_home" %>
+	<% end %>
+<% elsif params[:commit] == "Cancel" %>
+	<%= render :file => "partials/_home" %>
+<% else %>
+	<% params[:message] = "" %>
+<% end %>
+
+<% if params[:message] != nil %>
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <title>woRg &middot; Account settings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!-- Le styles -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/bootswatch.css" rel="stylesheet">
+</head>
+<body>
+<%= render :file => "partials/_navigation_bar" %>
+
+<br>
+<br>
+<br>
+<br>
+
+<div class="container">
+<div class="row-fluid">
+<div class="span12">
+    <div class="span6">
+		<h1><%= @session.get_name(params[:user_id]) %>'s profile @ woRg</h1>
+    </div>
+</div>
+<div class="span12"></div>
+<div class="span12">
+    <div class="span6">
+        <h2>
+            General user information:
+        </h2>
+    </div>
+    <div class="span6"></div>
+    <div class="span11">
+        <div class="span5">
+            <h4>First Name:</h4> <%= @session.get_name(params[:user_id]) %>
+        </div>
+        <div class="span5">
+            <h4>Last Name:</h4> <%= @session.get_last_name(params[:user_id]) %>
+        </div>
+    </div>
+    <div class="span11">
+        <div class="span5">
+            <h4>Email:</h4> <%= @session.get_email(params[:user_id]) %>
+        </div>
+        <div class="span3">
+            <h4>Gender:</h4> <%= @session.get_gender(params[:user_id]) %>
+        </div>
+        <div class="span3">
+            <h4>Birth date:</h4> <%= @session.get_birthdate(params[:user_id]) %>
+        </div>
+    </div>
+    <div class="span11">
+        <h4>Change password:</h4>
+    </div>
+    <div class="span11">
+        <%= form_tag({:controller => "session", :action => "settings", :user_id => params[:user_id]}, {:method => "post", :class => "form-horizontal well span11"}) do %>
+	    	<fieldset class="span12">				
+				<% if params[:message] != nil and params[:commit] == "Change password" %>			
+					<font color="red"><%= params[:message] %></font>		
+				<% end %>	
+				<div class="control-group">
+					<%= password_field_tag(:old_password, nil, {:class => "input-small span4", :placeholder => "Old password"}) %>
+					<%= password_field_tag(:password, nil, {:class => "input-small span4", :placeholder => "New password"}) %>					
+					<%= password_field_tag(:re_password, nil, {:class => "input-small span4", :placeholder => "Re-type password"}) %>
+					<%= submit_tag("Change password", {:class => "btn btn-success offset9"}) %>
+	            </div>
+			</fieldset>
+		<% end %>
+    </div>
+    <div class="span11"></div>
+</div>
+<div class="span12">
+    <div class="span6">
+        <h2>Profile settings:</h2>
+    </div>
+    <div class="span10">
+		<%= form_tag({:controller => "session", :action => "settings", :user_id => params[:user_id]}, {:method => "post", :class => "form-horizontal well span8"}) do %>
+        		<% if params[:message] != nil and params[:commit] == "Save changes" %>			
+					<font color="red"><%= params[:message] %></font>		
+				<% end %>	
+				<fieldset>
+                <legend><h3>Color preferences:</h3></legend>
+				<div class="control-group">
+                    <label class="control-label" for="color1"><h5>Favourite color:</h5></label>
+                    <div class="controls">
+                        <%= select_tag(:color1, options_for_select(@session.get_colors, @session.get_profile_value(params[:user_id], "color1"))) %>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="color2"><h5>Second Favourite color:</h5></label>
+
+                    <div class="controls">
+                        <%= select_tag(:color2, options_for_select(@session.get_colors, @session.get_profile_value(params[:user_id], "color2"))) %>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="color3"><h5>Third Favourite color:</h5></label>
+
+                    <div class="controls">
+                        <%= select_tag(:color3, options_for_select(@session.get_colors, @session.get_profile_value(params[:user_id], "color3"))) %>
+                    </div>
+                </div>
+                <legend><h3>Material preferences:</h3></legend>
+                <div class="control-group">
+                    <label class="control-label" for="material1"><h5>Favourite material:</h5></label>
+
+                    <div class="controls">
+                        <%= select_tag(:material1, options_for_select(@session.get_materials, @session.get_profile_value(params[:user_id], "material1"))) %>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="material2"><h5>Second Favourite material:</h5></label>
+
+                    <div class="controls">
+                        <%= select_tag(:material2, options_for_select(@session.get_materials, @session.get_profile_value(params[:user_id], "material2"))) %>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="material3"><h5>Third Favourite material:</h5></label>
+
+                    <div class="controls">
+                        <%= select_tag(:material3, options_for_select(@session.get_materials, @session.get_profile_value(params[:user_id], "material3"))) %>
+                    </div>
+                </div>
+                <legend><h3>Model preferences:</h3></legend>
+                <div class="control-group">
+                    <label class="control-label" for="model1"><h5>Favourite model:</h5></label>
+
+                    <div class="controls">
+                        <%= select_tag(:model1, options_for_select(@session.get_models, @session.get_profile_value(params[:user_id], "model1"))) %>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="model2"><h5>Second Favourite model:</h5></label>
+
+                    <div class="controls">
+                        <%= select_tag(:model2, options_for_select(@session.get_models, @session.get_profile_value(params[:user_id], "model2"))) %>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="model3"><h5>Third Favourite model:</h5></label>
+
+                    <div class="controls">
+                        <%= select_tag(:model3, options_for_select(@session.get_models, @session.get_profile_value(params[:user_id], "model3"))) %>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <%= submit_tag("Save changes", {:class => "btn btn-success"}) %>
+                    <%= submit_tag("Cancel", {:class => "btn btn-default offset1"}) %>
+                </div>
+            </fieldset>
+       	<% end %>
+    </div>
+</div>
+<%= render :file => "partials/_footer" %>
+    
+</div>
+
+<%= render :file => "partials/_javascripts" %>
+</body>
+</html>
+
+<% end %>
