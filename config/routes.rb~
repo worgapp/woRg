@@ -17,8 +17,6 @@ WoRg::Application.routes.draw do
 	match "/dress", :controller => "wardrobe", :action => "dress"
 	match "/search", :controller => "wardrobe", :action => "search"
 
-	GET "/imgs/"
-
 	resources :session
 	resources :partials
 end
